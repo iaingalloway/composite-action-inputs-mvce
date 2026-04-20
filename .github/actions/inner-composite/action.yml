@@ -1,0 +1,14 @@
+name: Inner composite
+description: Passes a value to the JS action
+inputs:
+  value:
+    description: The value to handle
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Call handler
+      uses: ./.github/actions/handle-value
+      with:
+        value: ${{ inputs.value }}

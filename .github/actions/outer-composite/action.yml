@@ -1,0 +1,20 @@
+name: Outer composite
+description: Sets the value to bar and calls the inner composite
+inputs:
+  value:
+    description: The value to handle
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Set value
+      id: value
+      shell: bash
+      run: |
+        echo "value=bar" >> "$GITHUB_OUTPUT"
+
+    - name: Call inner composite
+      uses: ./.github/actions/inner-composite
+      with:
+        value: ${{ steps.value.outputs.value }}

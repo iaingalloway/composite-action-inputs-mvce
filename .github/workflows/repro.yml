@@ -1,0 +1,16 @@
+name: Post hook sees wrong input
+
+on:
+  workflow_dispatch:
+
+jobs:
+  repro:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
+      - name: Call outer composite
+        uses: ./.github/actions/outer-composite
+        with:
+          value: foo

@@ -1,0 +1,11 @@
+name: Handle Value
+description: Handles a value in main and post
+inputs:
+  value:
+    description: The value to handle
+    required: true
+
+runs:
+  using: node24
+  main: main.js
+  post: post.js
